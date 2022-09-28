@@ -1,0 +1,8 @@
+cssselect==1.1.0
+Django==4.0.3
+djangorestframework==3.13.1
+lxml==4.8.0
+mongoengine==0.24.1
+pandas==1.4.1
+pymongo==4.0.2
+selenium==4.1.3

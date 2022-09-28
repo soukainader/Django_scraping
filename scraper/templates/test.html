@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>How To Make A Website</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	*{
+margin: 0;
+padding: 0;
+}
+
+.navbar-style
+{
+box-shadow: 0 5px 20px #efefef;
+text-transform: uppercase;
+}
+ul li a {
+ color: #106db3;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+ul li a:hover{
+ color:black;
+ transition: .3s;
+}
+.logo{
+	height: 50px;
+	width: 120px;
+}
+.icon-bar
+{
+background: #106db3;
+}
+.big-text
+{
+font-size: 52px;
+margin: 20px 0;
+color: #106db3;
+}
+a.btn{
+	margin: 30px 10px;
+	width: 150px;
+	padding: 10px;
+	border-radius: 20px;
+}
+
+a.btn-first{
+ background-color: darkorange;
+ color: #fff;
+}
+
+a.btn-second{
+ background-color: transparent;
+ border: 1px solid darkorange;
+ color: #333;
+}
+a.btn:hover{
+	background: darkorange;
+	border: none;
+	color: #fff;
+	box-shadow: 5px 5px 10px #999;
+	transition: 0.3s;
+}
+.banner-info, .banner-image{
+	margin: 30px 0;
+}
+</style>
+</head>
+<body>
+	<header class="header">
+		<nav class="navbar navbar-style">
+		<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+		<a href=""><img src="/static/TaleiScraper.png" class="logo"></a>
+		</div> 
+		<div class="collapse navbar-collapse" id="micon">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href=""> Home </a></li>
+			<li><a href=""> Features </a></li>
+			<li><a href=""> Team </a></li>
+			<li><a href=""> Gallery </a></li>
+			<li><a href=""> Contact Us </a></li>
+			</ul>
+		</div>	
+		</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+			<div class="col-sm-6 banner-info">
+			<h1>No more wasted time</h1>
+			<p class="big-text">Scrap aliexpress data now in minutes</p>
+			<p>Learn how to make beautiful responsive website using HTML,
+			CSS and Bootstrap</p>
+
+			<a class="btn btn-first" href="#">Like Video</a>
+			<a class="btn btn-second" href="#">Subscribe Us</a>
+            
+			</div>
+			<div class="col-sm-6 banner-image">
+				<img src="/static/scrap.png" class="img-responsive">
+				</div> 
+			</div> 
+			</div> 
+		</header>
+</body>
+</html> 

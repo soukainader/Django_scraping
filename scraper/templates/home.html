@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Talei Scraper</title>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
+
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <style>
+	*{
+margin: 0;
+padding: 0;
+}
+
+.navbar-style
+{
+box-shadow: 0 5px 20px #efefef;
+text-transform: uppercase;
+}
+ul li a {
+ color: #106db3;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+ul li a:hover{
+ color:black;
+ transition: .3s;
+}
+.logo{
+	height: 50px;
+	width: 120px;
+}
+.icon-bar
+{
+background: #106db3;
+}
+.big-text
+{
+font-size: 52px;
+margin: 20px 0;
+color: #106db3;
+}
+.banner-info, .banner-image{
+	margin: 50px 0;
+}
+
+#divButton{
+
+	margin: 30px 10px;
+	width: 150px;
+	padding: 10px;
+	border-radius: 20px;
+	border-color: transparent;
+	background-color: #106db3;
+    color: #fff;
+}
+#divButton:hover{
+	background: #106db3;
+	border: none;
+	color: #fff;
+	box-shadow: 5px 5px 10px #999;
+	transition: 0.3s;
+}
+#divSujet{
+	width:75%;
+	margin: auto;
+	padding:20px;
+	font-size:15px;
+	font-weight: 700;
+    text-align: center;
+    color:#106db3;
+}
+.inputSuj{
+	display:block;
+	width:80%;
+	height:50px;
+	border:2px solid #106db3;
+	border-radius:20px;
+	margin:auto;
+	margin-top:20px;
+	font-size:20px;
+	padding:0px 15px;
+}
+.inputSuj:focus{
+	box-shadow:0 2px 15px #106db3;
+	outline:none;
+}
+
+#parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.encadrer{
+	border: 3px outset #106db3;
+}
+.vertical-center {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#loading {
+            background: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+		
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #dbe4ed; 
+        } 
+
+		</style>
+</head>
+<body>
+	<header class="header">
+		<nav class="navbar navbar-style">
+		<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+		<a href=""><img src="/static/TaleiScraper.png" class="logo"></a>
+		</div> 
+		<div class="collapse navbar-collapse" id="micon">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href=""> Home </a></li>
+			<li><a href=""> Features </a></li>
+			<li><a href=""> Team </a></li>
+			<li><a href=""> Gallery </a></li>
+			<li><a href=""> Contact Us </a></li>
+			</ul>
+		</div>	
+		</div>
+		</nav>
+		<div class="container">
+			<div class="row">
+			<div class="col-sm-6 banner-info">
+			<h1>No more wasted time</h1>
+			<p class="big-text">Scrap aliexpress data now in minutes</p>
+			<div class="encadrer">
+
+			<form action="{% url 'datatable' %}" method="post">
+            	<br>
+            	<div id="parent">
+					<label style = "font-size: 15px" for="vehicle2">
+						With comments/pictures
+						<input type="checkbox" id="vehicle2" name="checko" value="no" >
+						</label><br>	&nbsp;&nbsp;&nbsp;
+            	   <select name="dropdown" id="id_select2_example" style="width: 150px;height: 50px;">
+                    <option data-img_src="/static/mar.png" value="mar">Morocco</option>
+                    <option data-img_src="/static/aust.png" value="spain">Australia</option>
+                </select></div>
+            
+            	{% csrf_token %}
+             <div id="divSujet">Please choose a product
+                {{form.subject}}
+             </div>
+			 <div class="vertical-center"><input type="submit"  value="Start" id="divButton"></div>  
+</form>	
+<br>
+			</div>
+			</div>
+			<div class="col-sm-6 banner-image">
+				<img src="/static/backback.png" class="img-responsive" width="5000" height="600">
+			</div> 
+			</div> 	
+			</div>
+
+</header>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+<script type="text/javascript">
+    function custom_template(obj){
+            var data = $(obj.element).data();
+            var text = $(obj.element).text();
+            if(data && data['img_src']){
+                img_src = data['img_src'];
+                template = $("<div><img src=\"" + img_src + "\" style=\"width:15%;height:15px;\"/>" + " " + text + "</div>");
+                return template;
+            }
+        }
+    var options = {
+        'templateSelection': custom_template,
+        'templateResult': custom_template,
+    }
+    $('#id_select2_example').select2(options);
+    $('.select2-container--default .select2-selection--single').css({'height': '30px'});
+	$(function(){
+        $('form').on('submit', function(e){
+            $('body').append('<div id="loading"><img src="/static/Spin.gif" class="center"></div>')
+        });
+    })
+</script>
+</body>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Aliexpress Datatable </title>
+    <meta name="description" content="Aliexpress DataTable.">
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      	*{
+margin: 0;
+padding: 0;
+}
+      .navbar-style
+{
+box-shadow: 0 5px 20px #efefef;
+text-transform: uppercase;
+}
+ul li a {
+ color: #106db3;
+ text-decoration: none;
+ font-weight: bold;
+}
+
+ul li a:hover{
+ color:black;
+ transition: .3s;
+}
+.logo{
+	height: 50px;
+	width: 120px;
+}
+.icon-bar
+{
+background: #106db3;
+}
+#scrap th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #106db3;
+  color: white;
+}
+#scrap td {
+  padding: 8px;
+  text-align: left;
+  background-color: white;
+}
+#filter {
+    display: inline-block;
+}
+
+#filter label {
+    display: block;
+    color: #106db3;
+    font-weight: bold;
+}
+#space{
+  display: flex; 
+  justify-content: space-around; 
+}
+
+    </style>
+</head>
+
+<body >
+  <header class="header">
+		<nav class="navbar navbar-style">
+		<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#micon">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+		<a href=""><img src="/static/TaleiScraper.png" class="logo"></a>
+		</div> 
+		<div class="collapse navbar-collapse" id="micon">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href=""> Home </a></li>
+			<li><a href=""> Features </a></li>
+			<li><a href=""> Team </a></li>
+			<li><a href=""> Gallery </a></li>
+			<li><a href=""> Contact Us </a></li>
+			</ul>
+		</div>	
+		</div>
+		</nav>
+  </header>
+  <div id="loading">
+	  </div>
+    <div  class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <div id="space">
+            <div id="filter">
+              <label>Price</label>
+              <input type="text" style="width: 100px;" placeholder="Min" id="min2" name="min2"/>
+              <input type="text" style="width: 100px;" placeholder="Max" id="max2" name="max2"/>
+          </div>
+          <div id="filter">
+            <label>Stars</label>
+            <input type="text" style="width: 100px;" placeholder="Min" id="min1" name="min1"/>
+            <input type="text" style="width: 100px;" placeholder="Max" id="max1" name="max1"/>
+        </div>
+        <div id="filter">
+          <label>Orders</label>
+          <input type="text" style="width: 100px;" placeholder="Min" id="min3" name="min3"/> 
+          <input type="text" style="width: 100px;" placeholder="Max" id="max3" name="max3"/>
+      </div>
+    </div>
+    <br>
+            <table id="scrap" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>
+                  <th WIDTH=200>Title</th>
+                  <th>Price</th>
+                  <th>Currency</th>
+                  <th>Stars</th>
+                  <th>Orders</th>
+                  <th>Shipping</th>
+                  <th>Supplier</th> 
+                  <th>Feedback</th>
+                  <th>Followers</th>
+                  <th>Reviews</th>
+                  <th>Pictures</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody> 
+                {% for product in products %}
+                <tr>                   
+                   <td> {{ product.Title }} </td>
+                   <td> {{ product.Price }} </td>
+                   <td> {{ product.Currency }} </td>
+                   <td> {{ product.Stars }} </td>
+                   <td> {{ product.Orders}} </td>
+                   <td> {{ product.Shipcost }} </td>
+                   <td> {{ product.Supplier }} </td>           
+                   <td> {{ product.Check }} </td>
+                   <td> {{ product.Follow }} </td>
+                   <td> {{ product.Feedback }} </td>
+                   <td> {{ product.Picture }} </td>
+                   <td><a href="{{product.Productlinks }}">Click here</a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script>
+              $.fn.dataTable.ext.search.push(
+                function( settings, data, dataIndex ) {
+                    var min1 = parseFloat( $('#min1').val(), 10 );
+                    var max1 = parseFloat( $('#max1').val(), 10 );
+                    var stars = parseFloat( data[3] ) || 0; // use data for the stars column
+            
+                    if ( ( isNaN( min1 ) && isNaN( max1 ) ) ||
+                        ( isNaN( min1) && stars <= max1 ) ||
+                        ( min1 <= stars   && isNaN( max1 ) ) ||
+                        ( min1 <= stars   && stars <= max1 ) )
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            $(document).ready(function() {
+                var table = $('#scrap').DataTable();
+                
+                // Event listener to the two range filtering inputs to redraw on input
+                $('#min1, #max1').keyup( function() {
+                    table.draw();
+                } );
+            } );    
+          
+             $.fn.dataTable.ext.search.push(
+              function( settings, data, dataIndex ) {
+                  var min2 = parseFloat( $('#min2').val(), 10 );
+                  var max2 = parseFloat( $('#max2').val(), 10 );
+                  var price = parseFloat( data[1] ) || 0; // use data for the price column
+          
+                  if ( ( isNaN( min2 ) && isNaN( max2 ) ) ||
+                      ( isNaN( min2 ) && price <= max2 ) ||
+                      ( min2 <= price   && isNaN( max2 ) ) ||
+                      ( min2 <= price   && price <= max2 ) )
+                  {
+                      return true;
+                  }
+                  return false;
+              }
+          );
+          $(document).ready(function() {
+              var table = $('#scrap').DataTable();
+              
+              // Event listener to the two range filtering inputs to redraw on input
+              $('#min2, #max2').keyup( function() {
+                  table.draw();
+              } );
+          } );   
+          $.fn.dataTable.ext.search.push(
+              function( settings, data, dataIndex ) {
+                  var min3 = parseFloat( $('#min3').val(), 10 );
+                  var max3 = parseFloat( $('#max3').val(), 10 );
+                  var nb_o = parseFloat( data[4] ) || 0; // use data for the number of orders column
+          
+                  if ( ( isNaN( min3 ) && isNaN( max3 ) ) ||
+                      ( isNaN( min3 ) && nb_o <= max3 ) ||
+                      ( min3 <= nb_o   && isNaN( max3 ) ) ||
+                      ( min3 <= nb_o   && nb_o <= max3 ) )
+                  {
+                      return true;
+                  }
+                  return false;
+              }
+          );
+          $(document).ready(function() {
+              var table = $('#scrap').DataTable();
+              // Event listener to the two range filtering inputs to redraw on input
+              $('#min3, #max3').keyup( function() {
+                  table.draw();
+              } );
+          } );  
+
+          /* loop over each th */
+         
+  $('#scrap tr th').each(function(i) {
+    //select all td in this column
+    var tds = $(this).parents('table')
+      .find(`tr td:nth-child(${i + 1})`);
+    // check if all the cells in this column are empty
+    // Note: Empty strings return 'false' - trim whitespace before.
+    if (tds.toArray().every(td => !td.textContent.trim())) {
+      //hide header
+      $(this).hide();
+      //hide cells
+      tds.hide();
+    }
+  });
+      </script>
+  
+</body>
+</html>
