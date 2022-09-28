@@ -1,5 +1,5 @@
 cssselect==1.1.0
-Django==4.0.3
+Django
 djangorestframework==3.13.1
 lxml==4.8.0
 mongoengine==0.24.1
